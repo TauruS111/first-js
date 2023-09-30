@@ -1,20 +1,23 @@
-{/* <div>
-      <p class="taskTitle">ЗАДАЧА 3</p>
-      <input id="passwordInput" type="text" />
-      <button id="passwordButton">Скрыть</button>
-    </div> */}
+/*
+Завдання 3
+Кнопка "Приховати" ховає текст і замінює назву кнопки на
+"Розкрити", при повторному натисканні текст знову стає доступним
+і кнопка набуває початкового вигляду.
+*/
 
-const passInput = document.querySelector('#passwordInput');
-const hideBtn = document.querySelector('#passwordButton');
+const button = document.querySelector("#passwordButton");
+const input = document.querySelector("#passwordInput");
 
-hideBtn.addEventListener('click', () => {
-    
-    if (passInput.type === 'text') {
-        passInput.type = 'password';
-        hideBtn.textContent = 'Показать';
-    }
-    else {
-        passInput.type = 'text';
-        hideBtn.textContent = 'Скрыть';
-    }
-})
+button.addEventListener("click", hidePassword);
+
+function hidePassword(event) {
+  const attributeValue = input.getAttribute("type");
+
+  if (attributeValue === "text") {
+    input.setAttribute("type", "password");
+    event.currentTarget.textContent = "Приховати";
+  } else {
+    input.setAttribute("type", "text");
+    event.currentTarget.textContent = "Розкрити";
+  }
+}
